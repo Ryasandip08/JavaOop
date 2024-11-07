@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class PinjamanUang {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input status karyawan
+        System.out.println("Masukkan status karyawan (1 untuk tetap, 2 untuk kontrak): ");
+        int statusKaryawan = scanner.nextInt();
+
+        // Input jumlah pinjaman
+        System.out.println("Masukkan jumlah pinjaman: ");
+        double jumlahPinjaman = scanner.nextDouble();
+
+        // Memanggil metode pinjaman_uang
+        double bunga = pinjaman_uang(statusKaryawan, jumlahPinjaman);
+        
+        // Menampilkan hasil
+        System.out.printf("Bunga yang harus dibayar: %.2f\n", bunga);
+        scanner.close();
+    }
+
+    public static double pinjaman_uang(int statusKaryawan, double jumlahPinjaman) {
+        double bunga;
+
+        // Menentukan bunga berdasarkan status karyawan
+        if (statusKaryawan == 1) { // Karyawan tetap
+            bunga = jumlahPinjaman * 0.05; // Bunga 5%
+        } else if (statusKaryawan == 2) { // Karyawan kontrak
+            bunga = jumlahPinjaman * 0.1; // Bunga 10%
+        } else {
+            System.out.println("Status karyawan tidak valid.");
+            return 0;
+        }
+
+        return bunga;
+    }
+}
